@@ -3,40 +3,53 @@
 }
 body{
     margin: 0px;
-    background-color: white;
-    font-family:Arial, Helvetica, sans-serif ;
+    padding: 0px;
+    font-family : Arial, Helvetica, sans-serif ;
   }
   body .header { 
     display: flex;
     width: 100%;
     margin: 0 auto;
+    background-color: aqua;
   }
   body .header .nav { 
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-    background-color: white;
+  }
+  #logo
+  {
+    margin-top: 20px;
+    width : "50%";
+    height : "180px";
+    margin-left:3rem;
   }
 .Searcharea {
-margin-top: 20px;
+margin-top: 10px;
+margin-left:11rem;
 }
 .Searcharea input {
-    height: 42px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #1f1f1f;
-    padding: 0 20px;
+    width:14rem;
+    display: inline-block;
+    background-color: transparent;
+    margin-top: 20px;
     }
+
     .Searcharea button {
-        background-color: blue;
-        height: 42px;
+        height: 25px;
+        width: 70px;
         border-radius: 5px;
         border: 1px solid #1f1f1f;
         padding: 0 20px;
+        margin-left:-6px;
+        background-color: transparent;
         }
 .menu
 {
     margin-top: 20px;
+    margin-left:12rem;
+    justify-content:space-around;
+    align-items: center;
 padding: 10px
 }
 .menu a{
@@ -45,17 +58,58 @@ padding: 10px
     margin-left: 15px;
     position: relative;
     line-height: 10px;
+    
 }
-.container a { 
-    color: black;
-    text-decoration: none;
-    margin-left: 15px;
+.container {
+    background-color: red;
+    height:50px;
+}
+    .container a {
+        text-decoration: none;
+        position: sticky;
+        margin-right:4rem;     
+    }
+
+.banner .video{
     position: relative;
-    text-align: center;
-} 
-.pro {
+    background-color: transparent;
+    height: auto;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1rem;
+    z-index: 0;
+}
+.banner #col{
+    position: absolute;
+    color: white;
+    margin-left:22rem;
+background:transparent;
+bottom: 40%;
+}
+
+.inf {
     width:80%;
     padding: 10px;
     margin: 0 auto;
     display:flex;
+    
+}
+.inf .pic{
+    width:calc((100% - 25px)/2);
+    overflow:hidden;
+    border:1px solid black;
+
+    
+}
+.inf .pic:nth-child(odd){
+    margin-right: 25px;
+    
+
+}
+.inf .pic img{
+    width:100%;
+}
+footer{
+    background-color: aqua;
 }
