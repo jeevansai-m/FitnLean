@@ -1,84 +1,33 @@
-
     var equipmentdata = [];
+    var equipmentid = null;
     $.getJSON('./js/equipments.json', (data)=>{
-        // setTimeout(afterload(data,0), 2000);
+        bindEquipment(data);
+        equipmentdata = data;
+    });
+    function bindEquipment(data){
         data.forEach((equipments)=>{
-            // var equipment = '';
-            // equipment='<div class="row">';
             var equipment = '<div class="col-md-4" ><div class="card" ><div class="ccc">'+
                 '<p class="text-center"><img src="'+equipments.img+'" class="imw"></p></div><div class="card-body">'+
                 '<h5  class="text-center">'+equipments.title+'</h5>'+
-                '<p class="text-center"><input type="submit" onclick="alert('+"jeevan"+')" name="Save" value="View and reserve" class=" cc1"></p>'+
+                '<p class="text-center"><input type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="viewReserve(\'' + equipments.id + '\')" name="Save" value="View and reserve" class=" cc1"></p>'+
             '</div></div></div>';
             $('.equipments').append(equipment);
-        });    
-    });
-function afterload(data,num){
-    data.forEach((equipments)=>{
-        var equipment="";
-        if(num==0){
-            equipment='<div class="row product">';
-        }
-        equipment += '<div class="col-md-4"><div class="card"><div class="ccc">'+
-            '<p class="text-center"><img src="'+equipments.img+'" class="imw"></p></div><div class="card-body">'+
-            '<h5  class="text-center">'+equipments.title+'</h5>'+
-            '<p class="text-center"><input type="submit" onclick="alert('+"jeevan"+')" name="Save" value="View and reserve" class=" cc1"></p>'+
-        '</div></div></div>';
-        if(num==2){
-            equipment +='</div>';
-            num=0;
-        }else{
-            num++;
-        }
-        $('.equipments').append(equipment);
-    });
-}
+        });  
+    }
+    function SearchBtn(){
+        var results = [];
+        var searchField = "title";
+        var searchVal = document.getElementById("searchText").value ;
+        results = equipmentdata.filter(element => element.title.includes(searchVal.toUpperCase()));
+        $('.equipments').empty();
+        bindEquipment(results);
+    }
+    function viewReserve(id){
+        equipmentid = parseInt(id);
+        var equipments=equipmentdata.filter(x => x.id === equipmentid);
+        var equipment ='<h5  class="text-center">'+equipments[0].title+'</h5><br/><p>'+equipments[0].description+'</p>';
+        $('.equipmentdetails').empty();
+        $('.equipmentdetails').append(equipment);
+    }
 
-//                     <div class="row product">
-//                         <div class="col-md-4 ">
-//                           <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/1.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Apple Watch Series 3</h5> 
-//                               <p  class="text-center">Price: $550.00</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                         <div class="col-md-4">
-//                            <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/2.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Beat Solo3 Wearless</h5> 
-//                               <p  class="text-center">Price: $159.99</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                          <div class="col-md-4">
-//                             <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/3.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Apple MacBook</h5> 
-//                               <p  class="text-center">Price: $2249.00</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                     </div>
-   
+    
