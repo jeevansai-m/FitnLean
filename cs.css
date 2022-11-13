@@ -47,7 +47,7 @@ margin-left:11rem;
 .menu
 {
     margin-top: 20px;
-    margin-left:12rem;
+    margin-left:38rem;
     justify-content:space-around;
     align-items: center;
 padding: 10px
@@ -59,6 +59,23 @@ padding: 10px
     position: relative;
     line-height: 10px;
     
+}
+.menus{
+    margin-top:32px;
+   margin-right:101px;
+  
+}
+.menu-line{
+    width:20px;
+    height:2px;
+    background-color: black;
+   margin-bottom:2px;
+}
+@media all and(max-width:480px){
+    .menus{
+        display: block;
+    }
+
 }
 .container {
     background-color: red;
@@ -110,6 +127,27 @@ bottom: 40%;
 .inf .pic img{
     width:100%;
 }
-footer{
-    background-color: aqua;
+.footer{
+    background-color: bisque;
+    flex-direction: row;
 }
+    .fa {
+        padding: 20px;
+        text-decoration: none;
+        width: 25px;
+        color: black;
+        display: flex;
+    }
+    .icons{
+        margin-left: 900px;
+    }
+    .copyright{
+        color: black;
+        display: flex;
+        margin: 0;
+        padding:20px;
+        font-size: 12px;
+        line-height: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
