@@ -1,84 +1,96 @@
-
     var equipmentdata = [];
+    var equipmentid = null;
     $.getJSON('./js/equipments.json', (data)=>{
-        // setTimeout(afterload(data,0), 2000);
+        bindEquipment(data);
+        equipmentdata = data;
+    });
+    function bindEquipment(data){
         data.forEach((equipments)=>{
-            // var equipment = '';
-            // equipment='<div class="row">';
             var equipment = '<div class="col-md-4" ><div class="card" ><div class="ccc">'+
                 '<p class="text-center"><img src="'+equipments.img+'" class="imw"></p></div><div class="card-body">'+
                 '<h5  class="text-center">'+equipments.title+'</h5>'+
-                '<p class="text-center"><input type="submit" onclick="alert('+"jeevan"+')" name="Save" value="View and reserve" class=" cc1"></p>'+
+                '<p class="text-center"><input type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="viewReserve(\'' + equipments.id + '\')" name="Save" value="View and reserve" class=" cc1"></p>'+
             '</div></div></div>';
             $('.equipments').append(equipment);
-        });    
-    });
-function afterload(data,num){
-    data.forEach((equipments)=>{
-        var equipment="";
-        if(num==0){
-            equipment='<div class="row product">';
+        });  
+    }
+    function SearchBtn(){
+        var results = [];
+        var searchField = "title";
+        var searchVal = document.getElementById("searchText").value ;
+        results = equipmentdata.filter(element => element.title.includes(searchVal.toUpperCase()));
+        $('.equipments').empty();
+        bindEquipment(results);
+    }
+    function viewReserve(id){
+        equipmentid = parseInt(id);
+        var equipments=equipmentdata.filter(x => x.id === equipmentid);
+        var equipment ='<h5  class="text-center">'+equipments[0].title+'</h5><br/><p>'+equipments[0].description+'</p>';
+        $('.equipmentdetails').empty();
+        $('.equipmentdetails').append(equipment);
+    }
+    function Clear(){
+        document.getElementById("txtname").value = "";
+        document.getElementById("txtemail").value = "";
+        document.getElementById("txtpnum").value = "";
+    }
+
+    function Reserve() {
+        if (isform_validate()) {
+            var formData = readFormData();
+            insertNewRecord(formData);
+            Clear();
         }
-        equipment += '<div class="col-md-4"><div class="card"><div class="ccc">'+
-            '<p class="text-center"><img src="'+equipments.img+'" class="imw"></p></div><div class="card-body">'+
-            '<h5  class="text-center">'+equipments.title+'</h5>'+
-            '<p class="text-center"><input type="submit" onclick="alert('+"jeevan"+')" name="Save" value="View and reserve" class=" cc1"></p>'+
-        '</div></div></div>';
-        if(num==2){
-            equipment +='</div>';
-            num=0;
-        }else{
-            num++;
+    }
+    // read the input form
+function readFormData() {
+    var formData = {};
+    formData["txtname"] = document.getElementById("txtname").value;
+    formData["txtemail"] = document.getElementById("txtemail").value;
+    formData["txtpnum"] = document.getElementById("txtpnum").value;
+    formData["equipmentid"] =equipmentid;
+    formData["title"] =equipmentdata.filter(x => x.id === equipmentid)[0].title;
+
+    return formData;
+}
+    // this function is  to validate the submit form
+function isform_validate(){
+    isValid = true;
+    var txtname = document.getElementById("txtname");
+    var txtemail = document.getElementById("txtemail");
+    var txtpnum = document.getElementById("txtpnum");
+    var emailvaild =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var phoneno = /^\d{10}$/;   
+    if (txtname.value == "" || txtname.value.length >=12 || txtname.value.length <= 3 ) {
+        if(txtname.value == ""){
+          alert("*name should not be empty");}
+        else{
+          alert("*name should be min 3 or max 12 words");
         }
-        $('.equipments').append(equipment);
-    });
+        isValid = false;
+    }
+    else if (emailvaild.test(txtemail.value) == false)
+    {
+    alert("*Invalid email id");
+    isValid = false;
+    }
+    else if (!(txtpnum.value.match(phoneno))) {
+        alert("*must be 10 digit number");
+        isValid = false;
+    }
+    else{
+    isValid = true;
+    return isValid;}
+}
+function insertNewRecord(data) {
+    var table = document.getElementById("tblrecords").getElementsByTagName('tbody')[0];
+    // var newRow = table.insertRow(table.length);
+    var newRow = table.insertRow(0);
+    var records = [data.txtname,data.txtemail,data.txtpnum,data.title];
+    for (var i=0;i<records.length;i++){
+        cell = newRow.insertCell(i);
+        cell.innerHTML = records[i];
+    }
 }
 
-//                     <div class="row product">
-//                         <div class="col-md-4 ">
-//                           <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/1.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Apple Watch Series 3</h5> 
-//                               <p  class="text-center">Price: $550.00</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                         <div class="col-md-4">
-//                            <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/2.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Beat Solo3 Wearless</h5> 
-//                               <p  class="text-center">Price: $159.99</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                          <div class="col-md-4">
-//                             <div class="card">
-//                             <div class="ccc">
-//                               <p class="text-center"><img src="https://raw.githubusercontent.com/rxhack/productImage/main/3.jpg" class="imw"></p> 
-// <!--                               <div class="overlay">
-//                                 <div class="text">View Details</div>
-//                               </div> -->
-//                             </div>
-//                             <div class="card-body">
-//                               <h5  class="text-center">Apple MacBook</h5> 
-//                               <p  class="text-center">Price: $2249.00</p>
-//                               <p class="text-center"><input type="submit" name="Save" value="Buy" class=" cc1"></p>
-//                             </div>
-//                           </div>
-//                         </div>
-//                     </div>
-   
+    
