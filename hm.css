@@ -83,6 +83,6 @@ video {
   }
   .footer{
     margin-top:20px;
-    background-color: black transparent;
+    background-color: gray;
     flex-direction: row;
 }

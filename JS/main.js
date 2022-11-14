@@ -40,6 +40,7 @@
             var formData = readFormData();
             insertNewRecord(formData);
             Clear();
+            alert('Reserved Successfully');
         }
     }
     // read the input form
