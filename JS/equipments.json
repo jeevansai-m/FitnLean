@@ -54,5 +54,12 @@
         "title": "EXERCISE BENCH",
         "price": "€60.99",
         "description": "Weight Benches- no matter what your sport requirement, ... Hit Fitness Deluxe Weight Bench with 40kg Adjustable Dumbbells."
+    },
+    {
+        "id": 9,
+        "img": "Picture/images.jpg",
+        "title": "BALL",
+        "price": "€21.99",
+        "description": "Physio balls, and balance balls, the purpose of the stability ball is to improve balance, muscle tone and core strength."
     }
 ]
