@@ -7,6 +7,7 @@
 /* Nagativation bar*/
 .navbar{
   margin-top: auto;
+  margin-top: -10px;
 }
 .navbar ul{
     display: flex;
@@ -213,6 +214,6 @@ video {
 .card{
   border: 1px solid;
   padding: 10px;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 2px 4px #888888;
 }
 /* Products End */ 

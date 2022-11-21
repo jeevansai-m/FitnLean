@@ -6,14 +6,15 @@
     });
     function bindEquipment(data){
         data.forEach((equipments)=>{
-            var equipment = '<div class="col-md-4" ><div class="card" ><div class="ccc">'+
+            var equipment = '<div class="col-md-4 product" ><div class="card" ><div class="ccc">'+
                 '<p class="text-center"><img src="'+equipments.img+'" class="imw"></p></div><div class="card-body">'+
-                '<h5  class="text-center">'+equipments.title+'</h5>'+
+                '<h5  class="text-center">'+equipments.title+'</h5>'+ '<p  class="text-center">Price: '+ equipments.price+'</p>'+
                 '<p class="text-center"><input type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="viewReserve(\'' + equipments.id + '\')" name="Save" value="View and reserve" class=" cc1"></p>'+
             '</div></div></div>';
             $('.equipments').append(equipment);
         });  
     }
+    // Search functionlity
     function SearchBtn(){
         var results = [];
         var searchField = "title";
@@ -22,19 +23,23 @@
         $('.equipments').empty();
         bindEquipment(results);
     }
+    // View popup content
     function viewReserve(id){
         equipmentid = parseInt(id);
         var equipments=equipmentdata.filter(x => x.id === equipmentid);
-        var equipment ='<h5  class="text-center">'+equipments[0].title+'</h5><br/><p>'+equipments[0].description+'</p>';
+        var equipment ='<h5  class="text-center">'+equipments[0].title+'</h5><br/><div class="text-center"><img src="'
+                            +equipments[0].img+'" class="img-fluid img-thumbnail"></div><br/><p>'+equipments[0].description+'</p>';
         $('.equipmentdetails').empty();
         $('.equipmentdetails').append(equipment);
     }
+    
+    // clear function
     function Clear(){
         document.getElementById("txtname").value = "";
         document.getElementById("txtemail").value = "";
         document.getElementById("txtpnum").value = "";
     }
-
+//on reserve click
     function Reserve() {
         if (isform_validate()) {
             var formData = readFormData();
@@ -85,7 +90,6 @@ function isform_validate(){
 }
 function insertNewRecord(data) {
     var table = document.getElementById("tblrecords").getElementsByTagName('tbody')[0];
-    // var newRow = table.insertRow(table.length);
     var newRow = table.insertRow(0);
     var records = [data.txtname,data.txtemail,data.txtpnum,data.title];
     for (var i=0;i<records.length;i++){
@@ -94,8 +98,8 @@ function insertNewRecord(data) {
     }
 }
 // navgation bar 
-const toggleButton = document.getElementsByClassName('navbar-toggle')[0];
-const navbarLinks = document.getElementsByClassName('navbar-links');
+var toggleButton = document.getElementsByClassName('navbar-toggle')[0];
+var navbarLinks = document.getElementsByClassName('navbar-links');
 toggleButton.addEventListener('click',function() {
     for(var i=0; i<navbarLinks.length; i++)
     navbarLinks[i].classList.toggle('active');

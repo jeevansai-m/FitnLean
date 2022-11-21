@@ -3,31 +3,56 @@
         "id": 1,
         "img": "Picture/ACTIVATE-UPRIGHT-BIKE-IMAGE.jpg",
         "title": "EXERCISE BIKE",
-        "description": "Able to aid with weight loss. You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
-        
+        "price": "€32",
+        "description": "depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."       
     },
     {
         "id": 2,
         "img": "Picture/AIR BIKE.png",
         "title": "AIR BIKE",
-        "description": "Able to aid with weight loss. You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
+        "price": "€22.20",
+        "description": "You can burn more than 600 calories an hour using a stationary bike workout."
     },
     {
         "id": 3,
         "img": "Picture/COMMERCIAL SPIN BIKE.png",
         "title": "COMMERCIAL SPIN BIKE",
-        "description": "Able to aid with weight loss. You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
+        "price": "€19.99",
+        "description": "You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
     },
     {
         "id": 4,
         "img": "Picture/REBEL SPIN EXERCISE BIKE.png",
         "title": "REBEL SPIN EXERCISE BIKE",
-        "description": "Able to aid with weight loss. You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
+        "price": "€19.99",
+        "description": "Depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
     },
     {
         "id": 5,
         "img": "Picture/threadmill.jpg",
         "title": "THREADMILL",
+        "price": "€21.99",
         "description": "Able to aid with weight loss. You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
+    },
+    {
+        "id": 6,
+        "img": "Picture/ACTIVATE-UPRIGHT-BIKE-IMAGE.jpg",
+        "title": "ACTIVATE UPRIGHT BIKE",
+        "price": "€10.99",
+        "description": " You can burn more than 600 calories an hour using a stationary bike workout, depending on your body weight and the intensity of your workout. This makes indoor cycling a great exercise choice for swiftly burning calories. Losing weight requires burning more calories than you take in."
+    },
+    {
+        "id": 7,
+        "img": "Picture/AIR ROWING MACHINE.png",
+        "title": "AIR ROWING MACHINE",
+        "price": "€9.99",
+        "description": "AIR ROWING MACHINE Losing weight requires burning more calories than you take in."
+    },
+    {
+        "id": 8,
+        "img": "Picture/ADJUSTABLE EXERCISE BENCH.png",
+        "title": "EXERCISE BENCH",
+        "price": "€60.99",
+        "description": "Weight Benches- no matter what your sport requirement, ... Hit Fitness Deluxe Weight Bench with 40kg Adjustable Dumbbells."
     }
 ]
