@@ -1,5 +1,6 @@
     var equipmentdata = [];
     var equipmentid = null;
+    //getting json data
     $.getJSON('./js/equipments.json', (data)=>{
         bindEquipment(data);
         equipmentdata = data;
@@ -48,7 +49,7 @@
             alert('Reserved Successfully');
         }
     }
-    // read the input form
+// read the input form
 function readFormData() {
     var formData = {};
     formData["txtname"] = document.getElementById("txtname").value;
@@ -59,7 +60,7 @@ function readFormData() {
 
     return formData;
 }
-    // this function is  to validate the submit form
+// this function is  to validate the submit form
 function isform_validate(){
     isValid = true;
     var txtname = document.getElementById("txtname");
@@ -67,20 +68,24 @@ function isform_validate(){
     var txtpnum = document.getElementById("txtpnum");
     var emailvaild =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     var phoneno = /^\d{10}$/;   
-    if (txtname.value == "" || txtname.value.length >=12 || txtname.value.length <= 3 ) {
+    if (txtname.value == "" || txtname.value.length >=15 || txtname.value.length <= 3 ) {
         if(txtname.value == ""){
-          alert("*name should not be empty");}
+            txtname.focus();
+            alert("*name should not be empty");}
         else{
-          alert("*name should be min 3 or max 12 words");
+            txtname.focus();
+            alert("*name should be min 4 or max 15 words");
         }
         isValid = false;
     }
     else if (emailvaild.test(txtemail.value) == false)
     {
-    alert("*Invalid email id");
-    isValid = false;
+        txtemail.focus();
+        alert("*Invalid email id");
+        isValid = false;
     }
     else if (!(txtpnum.value.match(phoneno))) {
+        txtpnum.focus();
         alert("*must be 10 digit number");
         isValid = false;
     }
@@ -97,11 +102,3 @@ function insertNewRecord(data) {
         cell.innerHTML = records[i];
     }
 }
-// navgation bar 
-var toggleButton = document.getElementsByClassName('navbar-toggle')[0];
-var navbarLinks = document.getElementsByClassName('navbar-links');
-toggleButton.addEventListener('click',function() {
-    for(var i=0; i<navbarLinks.length; i++)
-    navbarLinks[i].classList.toggle('active');
-});
-
